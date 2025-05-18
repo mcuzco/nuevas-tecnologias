@@ -1,0 +1,475 @@
+/* Variables profesionales y neutras */
+:root {
+  --color-primary: #1a237e;       /* azul oscuro */
+  --color-primary-light: #3949ab;
+  --color-primary-dark: #0d1450;
+  --color-background: #f5f7fa;
+  --color-text: #222;
+  --color-text-muted: #555;
+  --color-error: #b00020;
+  --color-white: #fff;
+
+  --priority-high: #d32f2f;        /* rojo vibrante */
+  --priority-medium: #f9a825;      /* amarillo dorado */
+  --priority-low: #388e3c;         /* verde oscuro */
+}
+
+/* Reset y base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Amplío el container para pantallas grandes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  width: 100%;
+}
+
+/* Header */
+header {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 20px 0;
+  user-select: none;
+  box-shadow: 0 4px 10px rgb(26 35 126 / 0.6);
+}
+
+header h1 {
+  font-weight: 700;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin: 0;
+}
+
+/* Main */
+main.container {
+  flex-grow: 1;
+  padding: 30px 0 60px;
+}
+
+form {
+  background: var(--color-white);
+  padding: 28px 32px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgb(26 35 126 / 0.12);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 20px 24px;
+  margin-bottom: 40px;
+}
+
+/* Cada form-row flex columna */
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botón en fila 3 que ocupe ambas columnas y centrado */
+.form-row.form-row-button {
+  grid-column: 1 / 3;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+/* Inputs y selects */
+.form-row input[type="text"],
+.form-row select,
+.form-row input[type="date"] {
+  padding: 10px 14px;
+  font-size: 15px;
+  border: 1.8px solid #cbd2e1;
+  border-radius: 8px;
+  color: var(--color-text);
+  font-weight: 500;
+  transition: border-color 0.2s ease;
+  background: #fff;
+}
+
+.form-row input[type="text"]::placeholder,
+.form-row select:invalid {
+  color: #a1a9bb;
+  font-weight: 400;
+}
+
+.form-row input[type="text"]:focus,
+.form-row select:focus,
+.form-row input[type="date"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px var(--color-primary-light);
+  background: #f9fbff;
+}
+
+/* Botón estilo */
+button[type="submit"] {
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 14px;
+  color: var(--color-white);
+  font-weight: 700;
+  padding: 14px 48px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 5px 16px rgb(26 35 126 / 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 7px 24px rgb(26 35 126 / 0.55);
+  outline: none;
+}
+
+/* Responsive para móviles */
+@media (max-width: 700px) {
+  form {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  .form-row.form-row-button {
+    grid-column: 1;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+
+
+
+
+/* Lista de tareas */
+ul#taskList {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 50px;
+}
+
+ul#taskList li {
+  background: var(--color-white);
+  margin-bottom: 16px;
+  padding: 18px 24px;
+  border-radius: 14px;
+  box-shadow: 0 3px 16px rgb(0 0 0 / 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+}
+
+ul#taskList li:hover {
+  box-shadow: 0 7px 22px rgb(0 0 0 / 0.15);
+}
+
+ul#taskList li.completed strong {
+  text-decoration: line-through;
+  color: #888888;
+  user-select: text;
+}
+
+.task-info {
+  flex-grow: 1;
+  margin-left: 16px;
+  user-select: text;
+}
+
+.task-info strong {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: var(--color-primary-dark);
+}
+
+.details {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.priority-high {
+  color: var(--priority-high);
+  font-weight: 800;
+}
+
+.priority-medium {
+  color: var(--priority-medium);
+  font-weight: 800;
+}
+
+.priority-low {
+  color: var(--priority-low);
+  font-weight: 800;
+}
+
+.delete-btn {
+  background: var(--color-error);
+  border: none;
+  color: var(--color-white);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.delete-btn i {
+  font-size: 16px;
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+  background: #7f0000;
+  outline: none;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.6);
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* Calendario literal */
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  background: var(--color-white);
+  padding: 16px 24px;
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgb(0 0 0 / 0.15);
+  user-select: none;
+  min-height: 460px;
+  max-height: none;
+  height: auto;
+  position: relative;
+  z-index: 0;
+
+  /* Ahora ocupa casi todo el ancho disponible menos margen */
+  width: calc(100vw - 64px);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.day-name {
+  font-weight: 900;
+  text-align: center;
+  padding: 14px 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 8px;
+  user-select: text;
+  font-size: 14px;
+}
+
+.calendar-day {
+  min-height: 150px;
+  max-height: none;
+  background: #f9fbff;
+  border-radius: 12px;
+  padding: 12px 14px 10px 14px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  position: relative;
+  cursor: default;
+  border: 1px solid #d0d9f4;
+  transition: box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.calendar-day:hover {
+  box-shadow: 0 0 20px var(--color-primary-light);
+  z-index: 10;
+}
+
+.calendar-day.inactive {
+  background: #e9edf9;
+  color: #a6b0d6;
+  border: none;
+  cursor: default;
+}
+
+.date-number {
+  font-weight: 900;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: var(--color-primary-dark);
+  user-select: text;
+  flex-shrink: 0;
+}
+
+.calendar-tasks-container {
+  max-height: 110px; /* límite para scroll */
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-light) transparent;
+}
+
+.calendar-tasks-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.calendar-tasks-container::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-light);
+  border-radius: 3px;
+}
+
+/* Tareas en calendario */
+.task-calendar-item {
+  font-size: 13px;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  white-space: normal;
+  line-height: 1.15;
+  user-select: text;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.15s ease;
+  cursor: default;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+}
+
+/* Colores prioridad */
+.task-high {
+  background-color: var(--priority-high);
+}
+
+.task-medium {
+  background-color: var(--priority-medium);
+}
+
+.task-low {
+  background-color: var(--priority-low);
+}
+
+/* Texto tarea y materia */
+.task-calendar-item .task-title {
+  font-weight: 800;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-calendar-item .task-subject {
+  font-weight: 500;
+  font-size: 12px;
+  opacity: 0.85;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 3px;
+}
+
+/* Tooltip sobresaliendo fuera del calendario */
+#tooltip {
+  position: fixed;
+  pointer-events: none;
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  padding: 14px 20px;
+  border-radius: 14px;
+  white-space: pre-line;
+  width: 280px;
+  max-width: 90vw;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10000;
+  font-size: 14px;
+  user-select: text;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* Controles calendario */
+#calendarControls {
+  text-align: center;
+  margin-bottom: 18px;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#calendarControls button {
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid var(--color-primary);
+  background: white;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#calendarControls button:hover,
+#calendarControls button:focus {
+  background: var(--color-primary);
+  color: white;
+  outline: none;
+}
+
+#currentMonthYear {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  user-select: text;
+}
+
+/* Footer */
+footer {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 18px 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  user-select: none;
+  box-shadow: 0 -3px 12px rgb(26 35 126 / 0.6);
+  margin-top: auto;
+}
